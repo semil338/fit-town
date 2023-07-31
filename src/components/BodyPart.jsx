@@ -4,15 +4,29 @@ import { useState } from "react";
 import { Listbox } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { bodyPart } from "../constant";
+import { useDispatch } from "react-redux";
+import {
+  fetchAllExercises,
+  fetchBodyPartExercises,
+} from "../features/exercise/exerciseSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function BodyPartBox() {
   const [selected, setSelected] = useState(bodyPart[0]);
+  const dispatch = useDispatch();
+  const onChange = (e) => {
+    if (e.id === 0) {
+      dispatch(fetchAllExercises());
+    } else {
+      dispatch(fetchBodyPartExercises(e.name.toLowerCase()));
+    }
+    setSelected(e);
+  };
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox value={selected} onChange={onChange}>
       {({ open }) => (
         <>
           <div className="relative mt-2">
@@ -37,7 +51,7 @@ export default function BodyPartBox() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 max-h-56 right-1 w-[150px] overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 max-h-56 right-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {bodyPart.map((person) => (
                   <Listbox.Option
                     key={person.id}

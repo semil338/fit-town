@@ -1,4 +1,20 @@
+import { useDispatch } from "react-redux";
+import { fetchNameExercises } from "../features/exercise/exerciseSlice";
+import { useState } from "react";
+
 const SearchBox = () => {
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const onClick = () => {
+    dispatch(fetchNameExercises(search));
+    setSearch("");
+  };
+
   return (
     <div id="exercises">
       <div className="flex items-center justify-center flex-col">
@@ -11,6 +27,8 @@ const SearchBox = () => {
               type="text"
               name="search"
               id="search"
+              value={search}
+              onChange={onChange}
               className="block w-full rounded-md border-0 py-3 sm:pl-7 pl-5 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6 "
               placeholder="Search Exercises"
             />
@@ -18,6 +36,7 @@ const SearchBox = () => {
               <button
                 id="currency"
                 name="currency"
+                onClick={onClick}
                 className="h-full rounded-md border-0 bg-gray-700 px-3 sm:px-5 text-white focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm"
               >
                 Search

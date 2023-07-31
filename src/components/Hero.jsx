@@ -24,12 +24,12 @@ export default function Hero() {
               up your life to fullest.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                to="#exercises"
+              <a
+                href="#exercises"
                 className="rounded-md bg-[#4d47ac] px-5 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
           </div>
         </div>

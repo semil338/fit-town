@@ -1,7 +1,6 @@
 export const navigation = [
   { name: "Home", href: "#", current: true },
   { name: "Exercise", href: "#exercises", current: false },
-  { name: "Workout Plan", href: "#", current: false },
   { name: "BMI", href: "#bmi", current: false },
 ];
 
