@@ -16,7 +16,7 @@ const SharedLayout = () => {
 
 const App = () => {
   return (
-    <div className="bg-[#fcfdff] w-full overflow-hidden">
+    <div className="bg-[#fcfdff] w-full overflow-hidden font-poppins">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
