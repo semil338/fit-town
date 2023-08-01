@@ -25,7 +25,7 @@ const Navbar = () => {
         styles.paddingX
       } ${styles.flexCenter} fixed z-10 w-full`}
     >
-      <div className={`${styles.boxWidth} `}>
+      <div className={`${styles.boxWidth}`}>
         <header className="text-white py-3">
           <nav
             className="flex items-center justify-between"
